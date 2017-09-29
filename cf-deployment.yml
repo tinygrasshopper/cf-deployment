@@ -109,6 +109,10 @@ instance_groups:
   - name: metron_agent
     release: loggregator
     properties: *metron_agent_properties
+- name: etcd
+  azs:
+  - z1
+  instances: 0
 - name: doppler
   azs:
   - z1
