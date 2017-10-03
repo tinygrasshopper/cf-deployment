@@ -1,21 +1,21 @@
 - path: /releases/name=cf-mysql/url
   type: replace
-  value: https://storage.googleapis.com/cf-deployment-compiled-releases/cf-mysql-36-ubuntu-trusty-3445.11-20170922-175107-709587487.tgz
+  value: https://storage.googleapis.com/cf-deployment-compiled-releases/cf-mysql-36.7.0-ubuntu-trusty-3445.11-20171003-194954-245143239.tgz
 - path: /releases/name=cf-mysql/version
   type: replace
-  value: "36"
+  value: 36.7.0
 - path: /releases/name=cf-mysql/sha1
   type: replace
-  value: bae1f1d29241e517d6b587898ff40373aa350201
+  value: 7e40e95eda242ef36e33f3f6fe2a8e4be24ee75e
 - path: /releases/name=capi/url
   type: replace
-  value: https://storage.googleapis.com/cf-deployment-compiled-releases/capi-1.42.0-ubuntu-trusty-3445.11-20170920-011008-084229294.tgz
+  value: https://storage.googleapis.com/cf-deployment-compiled-releases/capi-1.43.0-ubuntu-trusty-3445.11-20171002-214201-18613682.tgz
 - path: /releases/name=capi/version
   type: replace
-  value: 1.42.0
+  value: 1.43.0
 - path: /releases/name=capi/sha1
   type: replace
-  value: 341b1352441a2c2d326fc87c7cbd89182ed82fb1
+  value: ae33f33fecc117fb91e1aeccda7e18aad5a6ec6f
 - path: /releases/name=binary-buildpack/url
   type: replace
   value: https://storage.googleapis.com/cf-deployment-compiled-releases/binary-buildpack-1.0.14-ubuntu-trusty-3445.11-20170920-010249-486499159.tgz
@@ -36,13 +36,13 @@
   value: 37951035fc67215b5af6f04cf7722642ee2f8898
 - path: /releases/name=uaa/url
   type: replace
-  value: https://storage.googleapis.com/cf-deployment-compiled-releases/uaa-50-ubuntu-trusty-3445.11-20170920-010535-893881578.tgz
+  value: https://storage.googleapis.com/cf-deployment-compiled-releases/uaa-51-ubuntu-trusty-3445.11-20171002-012028-238747917.tgz
 - path: /releases/name=uaa/version
   type: replace
-  value: "50"
+  value: "51"
 - path: /releases/name=uaa/sha1
   type: replace
-  value: de40bf4cac6f37d3c7f2b1966d99a2a494ecacd8
+  value: 5b9a47b6d01d9c538398e79a8d2859c8966124eb
 - path: /releases/name=nats/url
   type: replace
   value: https://storage.googleapis.com/cf-deployment-compiled-releases/nats-22-ubuntu-trusty-3445.11-20170920-010521-924435662.tgz
@@ -81,13 +81,13 @@
   value: 7fd36b9ba60eb3f3dccd02cbe98c6cbb628c174d
 - path: /releases/name=cflinuxfs2/url
   type: replace
-  value: https://storage.googleapis.com/cf-deployment-compiled-releases/cflinuxfs2-1.156.0-ubuntu-trusty-3445.11-20170920-174902-947367709.tgz
+  value: https://storage.googleapis.com/cf-deployment-compiled-releases/cflinuxfs2-1.157.0-ubuntu-trusty-3445.11-20171002-103125-18191939.tgz
 - path: /releases/name=cflinuxfs2/version
   type: replace
-  value: 1.156.0
+  value: 1.157.0
 - path: /releases/name=cflinuxfs2/sha1
   type: replace
-  value: c466f366802cbf200e947ab8ded9639fed3ef791
+  value: ca7ee77c66c495baade073dfa9a22af73869f4bd
 - path: /releases/name=garden-runc/url
   type: replace
   value: https://storage.googleapis.com/cf-deployment-compiled-releases/garden-runc-1.9.4-ubuntu-trusty-3445.11-20170928-110857-230992161.tgz
@@ -99,13 +99,13 @@
   value: 923211cabbc2626fb97e76bee532ce45b732a34f
 - path: /releases/name=loggregator/url
   type: replace
-  value: https://storage.googleapis.com/cf-deployment-compiled-releases/loggregator-98-ubuntu-trusty-3445.11-20170922-205356-558598317.tgz
+  value: https://storage.googleapis.com/cf-deployment-compiled-releases/loggregator-99-ubuntu-trusty-3445.11-20170929-210918-989036286.tgz
 - path: /releases/name=loggregator/version
   type: replace
-  value: "98"
+  value: "99"
 - path: /releases/name=loggregator/sha1
   type: replace
-  value: b97a1188aecdb0453ee2205218d7b12e03650fe4
+  value: 5a46cbc14c5fe0b144f12296df6c91ea36433c4d
 - path: /releases/name=go-buildpack/url
   type: replace
   value: https://storage.googleapis.com/cf-deployment-compiled-releases/go-buildpack-1.8.8-ubuntu-trusty-3445.11-20170920-155636-847182583.tgz
@@ -144,13 +144,13 @@
   value: 876c5c88820309b4d8abf6c7836c5483aa37bf9a
 - path: /releases/name=ruby-buildpack/url
   type: replace
-  value: https://storage.googleapis.com/cf-deployment-compiled-releases/ruby-buildpack-1.7.2-ubuntu-trusty-3445.11-20170928-005321-258890193.tgz
+  value: https://storage.googleapis.com/cf-deployment-compiled-releases/ruby-buildpack-1.7.3-ubuntu-trusty-3445.11-20171002-151950-799236559.tgz
 - path: /releases/name=ruby-buildpack/version
   type: replace
-  value: 1.7.2
+  value: 1.7.3
 - path: /releases/name=ruby-buildpack/sha1
   type: replace
-  value: 54887b2d85ec124e0e9a744acaf5eba021d99595
+  value: deabb18f36c73b50c64469a22a04d1f48e92fb4f
 - path: /releases/name=statsd-injector/url
   type: replace
   value: https://storage.googleapis.com/cf-deployment-compiled-releases/statsd-injector-1.0.30-ubuntu-trusty-3445.11-20170920-010346-838833864.tgz
@@ -171,22 +171,22 @@
   value: 7633debca6e02ba2ad874bf315edf11647f8fab4
 - path: /releases/name=python-buildpack/url
   type: replace
-  value: https://storage.googleapis.com/cf-deployment-compiled-releases/python-buildpack-1.5.25-ubuntu-trusty-3445.11-20170928-005727-608007964.tgz
+  value: https://storage.googleapis.com/cf-deployment-compiled-releases/python-buildpack-1.5.26-ubuntu-trusty-3445.11-20171002-151948-707332196.tgz
 - path: /releases/name=python-buildpack/version
   type: replace
-  value: 1.5.25
+  value: 1.5.26
 - path: /releases/name=python-buildpack/sha1
   type: replace
-  value: b419749e8b3c70aab4b259b1686fcfe72b22ed24
+  value: ad0a03a01dbe15d0cddde44d782aa322b756df2f
 - path: /releases/name=staticfile-buildpack/url
   type: replace
-  value: https://storage.googleapis.com/cf-deployment-compiled-releases/staticfile-buildpack-1.4.15-ubuntu-trusty-3445.11-20170920-155638-252905036.tgz
+  value: https://storage.googleapis.com/cf-deployment-compiled-releases/staticfile-buildpack-1.4.16-ubuntu-trusty-3445.11-20171002-151957-293348631.tgz
 - path: /releases/name=staticfile-buildpack/version
   type: replace
-  value: 1.4.15
+  value: 1.4.16
 - path: /releases/name=staticfile-buildpack/sha1
   type: replace
-  value: 9a32f7f738ff17ba2c658c41c2fa1a0d72b0c70a
+  value: 2919c93e610686a4aaccb6720d4d84fbfc5bb7ec
 - path: /releases/name=dotnet-core-buildpack/url
   type: replace
   value: https://storage.googleapis.com/cf-deployment-compiled-releases/dotnet-core-buildpack-1.0.27-ubuntu-trusty-3445.11-20170928-005313-418846909.tgz
@@ -311,3 +311,12 @@
   value:
     os: ubuntu-trusty
     version: "3445.11"
+- path: /releases/name=cf-syslog-drain/url
+  type: replace
+  value: https://storage.googleapis.com/cf-deployment-compiled-releases/cf-syslog-drain-2-ubuntu-trusty-3445.11-20171002-233845-331698755.tgz
+- path: /releases/name=cf-syslog-drain/version
+  type: replace
+  value: "2"
+- path: /releases/name=cf-syslog-drain/sha1
+  type: replace
+  value: e2c2767c0940904d865cc8661178fb163b246cfe

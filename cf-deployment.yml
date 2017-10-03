@@ -72,8 +72,6 @@ instance_groups:
   - name: metron_agent
     release: loggregator
     properties: &metron_agent_properties
-      metron_agent:
-        deployment: "((system_domain))"
       metron_endpoint:
         shared_secret: "((dropsonde_shared_secret))"
       loggregator:
@@ -478,8 +476,6 @@ instance_groups:
   - name: statsd_injector
     release: statsd-injector
     properties: &statsd_injector_properties
-      statsd_injector:
-        deployment: "((system_domain))"
       loggregator:
         tls:
           ca_cert: "((loggregator_tls_statsdinjector.ca))"
@@ -1029,6 +1025,24 @@ instance_groups:
             ca_cert: "((uaa_ssl.ca))"
             port: 8443
           bbs: *diego_bbs_client_properties
+  - name: scheduler
+    release: cf-syslog-drain
+    properties:
+      scalablesyslog:
+        scheduler:
+          api:
+            url: https://cloud-controller-ng.service.cf.internal:9023
+          tls:
+            client:
+              ca: "((scheduler_client_tls.ca))"
+              cert: "((scheduler_client_tls.certificate))"
+              key: "((scheduler_client_tls.private_key))"
+              adapter_cn: "ss-adapter"
+            api:
+              ca: "((scheduler_api_tls.ca))"
+              cert: "((scheduler_api_tls.certificate))"
+              key: "((scheduler_api_tls.private_key))"
+              cn: "cloud-controller-ng.service.cf.internal"
 - name: diego-cell
   azs:
   - z1
@@ -1212,45 +1226,6 @@ instance_groups:
           uris:
           - doppler.((system_domain))
           - "*.doppler.((system_domain))"
-  - name: metron_agent
-    release: loggregator
-    properties: *metron_agent_properties
-
-- name: syslog-scheduler
-  azs:
-  - z1
-  instances: 1
-  persistent_disk_type: 1GB
-  vm_type: minimal
-  stemcell: default
-  networks:
-  - name: default
-  jobs:
-  - name: consul_agent
-    release: consul
-    consumes:
-      consul: nil
-      consul_common: {from: consul_common_link}
-      consul_server: nil
-      consul_client: {from: consul_client_link}
-  - name: scheduler
-    release: cf-syslog-drain
-    properties:
-      scalablesyslog:
-        scheduler:
-          api:
-            url: https://cloud-controller-ng.service.cf.internal:9023
-          tls:
-            client:
-              ca: "((scheduler_client_tls.ca))"
-              cert: "((scheduler_client_tls.certificate))"
-              key: "((scheduler_client_tls.private_key))"
-              adapter_cn: "ss-adapter"
-            api:
-              ca: "((scheduler_api_tls.ca))"
-              cert: "((scheduler_api_tls.certificate))"
-              key: "((scheduler_api_tls.private_key))"
-              cn: "cloud-controller-ng.service.cf.internal"
   - name: metron_agent
     release: loggregator
     properties: *metron_agent_properties
@@ -1604,13 +1579,13 @@ releases:
   version: 1.0.14
   sha1: c5ba6b6d99b972ec34dece478302351d8b4f6bbc
 - name: capi
-  url: https://bosh.io/d/github.com/cloudfoundry/capi-release?v=1.42.0
-  version: 1.42.0
-  sha1: 477864767aa0764f27111235ea2f0e4e222a1d83
+  url: https://bosh.io/d/github.com/cloudfoundry/capi-release?v=1.43.0
+  version: 1.43.0
+  sha1: 94da536a79b95bf9b723d30ab42a944938cf2e76
 - name: cf-mysql
-  url: https://bosh.io/d/github.com/cloudfoundry/cf-mysql-release?v=36
-  version: "36"
-  sha1: 746240c005465ffa105ee89e53e401e311b4fbf8
+  url: https://bosh.io/d/github.com/cloudfoundry/cf-mysql-release?v=36.7.0
+  version: 36.7.0
+  sha1: 3130fa20304dbc6a61397bdf1695ad038c483c52
 - name: cf-networking
   url: https://bosh.io/d/github.com/cloudfoundry-incubator/cf-networking-release?v=1.8.0
   version: 1.8.0
@@ -1624,9 +1599,9 @@ releases:
   version: "2"
   sha1: c9954676033164f550ae645bd1216cf56d159905
 - name: cflinuxfs2
-  url: https://bosh.io/d/github.com/cloudfoundry/cflinuxfs2-release?v=1.156.0
-  version: 1.156.0
-  sha1: f47391f8ee5dce2aacfaf4e82d3cdcf78234a2ac
+  url: https://bosh.io/d/github.com/cloudfoundry/cflinuxfs2-release?v=1.157.0
+  version: 1.157.0
+  sha1: 0a2ce532d4e8e981d411e8a8f71472a2c0c58ad9
 - name: consul
   url: https://bosh.io/d/github.com/cloudfoundry-incubator/consul-release?v=178
   version: "178"
@@ -1652,9 +1627,9 @@ releases:
   version: 4.5.1
   sha1: d99f66ff5e9182849a5310dbc545eb9af429d187
 - name: loggregator
-  url: https://bosh.io/d/github.com/cloudfoundry/loggregator?v=98
-  version: "98"
-  sha1: 6b9371e4290e75cf2592ca86ce454fef8780ae82
+  url: https://bosh.io/d/github.com/cloudfoundry/loggregator?v=99
+  version: "99"
+  sha1: c2fe986fae68a15424d11e78cf7f80c2c56f1913
 - name: nats
   url: https://bosh.io/d/github.com/cloudfoundry/nats-release?v=22
   version: "22"
@@ -1668,29 +1643,29 @@ releases:
   version: 4.3.42
   sha1: 8161798443f31242968797da14f2aa905672cac3
 - name: python-buildpack
-  url: https://bosh.io/d/github.com/cloudfoundry/python-buildpack-release?v=1.5.25
-  version: 1.5.25
-  sha1: dcd97e1053f0677ed1db9415f7abcd9824c4c2f9
+  url: https://bosh.io/d/github.com/cloudfoundry/python-buildpack-release?v=1.5.26
+  version: 1.5.26
+  sha1: a8b679f5c1da6f71a9c5f9ef5dcd985366c3e38a
 - name: routing
   url: https://bosh.io/d/github.com/cloudfoundry-incubator/cf-routing-release?v=0.163.0
   version: 0.163.0
   sha1: f0dacd62bbf23b70684370c7ededaf2733ddb6ae
 - name: ruby-buildpack
-  url: https://bosh.io/d/github.com/cloudfoundry/ruby-buildpack-release?v=1.7.2
-  version: 1.7.2
-  sha1: 0933145c639af2b1097e61d516acaadd3b9ea181
+  url: https://bosh.io/d/github.com/cloudfoundry/ruby-buildpack-release?v=1.7.3
+  version: 1.7.3
+  sha1: 079d84993e3a854f8e3938f7a4761a0d76fee295
 - name: staticfile-buildpack
-  url: https://bosh.io/d/github.com/cloudfoundry/staticfile-buildpack-release?v=1.4.15
-  version: 1.4.15
-  sha1: 16d613b091e2334b75b1318ead07e289bdbc7298
+  url: https://bosh.io/d/github.com/cloudfoundry/staticfile-buildpack-release?v=1.4.16
+  version: 1.4.16
+  sha1: 8fd958f62024be957604277bc104bbef3dd3bfc2
 - name: statsd-injector
   url: https://bosh.io/d/github.com/cloudfoundry/statsd-injector-release?v=1.0.30
   version: 1.0.30
   sha1: b0f201e0341af9736848514c76149070ea902e41
 - name: uaa
-  url: https://bosh.io/d/github.com/cloudfoundry/uaa-release?v=50
-  version: "50"
-  sha1: f0fdb16065e41044718ab6c972baff8728ae913b
+  url: https://bosh.io/d/github.com/cloudfoundry/uaa-release?v=51
+  version: "51"
+  sha1: 869b8e6bf58f5431b3579f730f142814aae39d71
 stemcells:
 - alias: default
   os: ubuntu-trusty
